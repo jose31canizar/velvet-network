@@ -7,7 +7,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ modelId: string }> }) {
+  const { modelId } = await params
+
   return <div>
     <Calendar />
     <Select>
@@ -15,7 +17,7 @@ export default function Home() {
         <SelectValue placeholder="Theme" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="light">Light</SelectItem>
+        <SelectItem value="light">{modelId}</SelectItem>
         <SelectItem value="dark">Dark</SelectItem>
         <SelectItem value="system">System</SelectItem>
       </SelectContent>
